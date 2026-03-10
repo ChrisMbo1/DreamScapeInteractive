@@ -12,6 +12,9 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using DreamScapeInteractive.Model;
+using DreamScapeInteractive.Session;
+using BCrypt;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -27,5 +30,42 @@ namespace DreamScapeInteractive.Views
         {
             InitializeComponent();
         }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            string username = UsernameInput.Text;
+            string password = PasswordInput.Password;
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                ErrorText.Text = "Please enter username and password";
+                ErrorText.Visibility = Visibility.Visible;
+                return;
+            }
+
+            using var db = new Data.AppDataContext();
+
+            var user = db.Users.FirstOrDefault(u => u.Username == username);
+
+            if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
+            {
+                ErrorText.Text = "Invalid username or password";
+                ErrorText.Visibility = Visibility.Visible;
+                return;
+            }
+            Sessions.CurrentUser = user;
+            Frame.Navigate(typeof(HomePage));
+        }
+
+
+        private void GoToRegister_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            Frame.Navigate(typeof(RegisterPage));
+        }
+
+        
+
     }
 }

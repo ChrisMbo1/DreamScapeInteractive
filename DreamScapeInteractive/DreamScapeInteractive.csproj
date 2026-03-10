@@ -14,6 +14,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\HomePage.xaml" />
+    <None Remove="Views\InventoryPage.xaml" />
     <None Remove="Views\LoginPage.xaml" />
     <None Remove="Views\RegisterPage.xaml" />
     <None Remove="Views\WelcomePage.xaml" />
@@ -42,10 +44,21 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7705" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260209005" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\InventoryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\RegisterPage.xaml">

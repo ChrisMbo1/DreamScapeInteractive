@@ -8,7 +8,23 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+
+    <Grid Padding="20" VerticalAlignment="Center">
+
+        <StackPanel Width="300" Spacing="12">
+
+            <TextBlock Text="Login" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+            <TextBox x:Name="UsernameInput" PlaceholderText="Username" />
+            <PasswordBox x:Name="PasswordInput" PlaceholderText="Password"/>
+
+            <Button Content="Login" Click="LoginButton_Click"/>
+
+            <TextBlock Text="Don't have an account?" HorizontalAlignment="Center"/>
+            <Button Content="Register" Click="GoToRegister_Click"/>
+
+            <TextBlock x:Name="ErrorText" Foreground="Red" Visibility="Collapsed"/>
+        </StackPanel>
 
     </Grid>
 </Page>

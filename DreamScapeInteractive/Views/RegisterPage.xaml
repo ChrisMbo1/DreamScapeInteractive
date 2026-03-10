@@ -7,8 +7,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    
+    <Grid Padding="20" VerticalAlignment="Center">
+        <StackPanel Width="300" Spacing="12">
 
-    <Grid>
+            <TextBlock Text="Register" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
 
+            <TextBox x:Name="UsernameInput" PlaceholderText="Username"/>
+            <PasswordBox x:Name="PasswordInput" PlaceholderText="Password"/>
+            <PasswordBox x:Name="ConfirmPasswordInput" PlaceholderText="Confirm Password"/>
+
+            <Button Content="Register" Click="RegisterButton_Click"/>
+
+
+            <Button Content="Login" Click="GoToLoginPage_Click"/>
+
+            <TextBlock x:Name="ErrorText" Foreground="Red" Visibility="Collapsed"/>
+        </StackPanel>
     </Grid>
 </Page>

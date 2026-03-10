@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+x:Class="DreamScapeInteractive.Views.InventoryPage"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:local="using:DreamScapeInteractive.Views"
+xmlns:Model="using:DreamScapeInteractive.Model"
+xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+mc:Ignorable="d">
+    <Grid Padding="20">
+        <StackPanel>
+            <TextBlock Text="Your Inventory" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <ListView x:Name="InventoryList" 
+                      SelectionMode="None"
+                      Margin="0,0,0,20">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="Model:Inventory">
+                        <StackPanel Orientation="Horizontal" Padding="5">
+                            <TextBlock Text="{x:Bind Item.Name}" FontSize="18" Width="200"/>
+                            <TextBlock Text=" x " FontSize="18"/>
+                            <TextBlock Text="{x:Bind Quantity}" FontSize="18"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <TextBlock x:Name="NoItemsText" Text="You have no items in your inventory." 
+                       FontSize="18" FontStyle="Italic" 
+                       HorizontalAlignment="Center" 
+                       Visibility="Collapsed"/>
+        </StackPanel>
+    </Grid>
+</Page>
