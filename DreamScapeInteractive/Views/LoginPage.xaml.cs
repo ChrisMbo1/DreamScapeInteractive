@@ -13,6 +13,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using DreamScapeInteractive.Model;
+using Microsoft.EntityFrameworkCore;
 using DreamScapeInteractive.Session;
 using BCrypt;
 
@@ -45,7 +46,9 @@ namespace DreamScapeInteractive.Views
 
             using var db = new Data.AppDataContext();
 
-            var user = db.Users.FirstOrDefault(u => u.Username == username);
+            var user = db.Users
+                         .Include(u => u.Role)
+                         .FirstOrDefault(u => u.Username == username);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.PasswordHash))
             {
@@ -53,14 +56,22 @@ namespace DreamScapeInteractive.Views
                 ErrorText.Visibility = Visibility.Visible;
                 return;
             }
+
             Sessions.CurrentUser = user;
-            Frame.Navigate(typeof(HomePage));
+
+            if (user.Role != null && user.Role.Roles == "Admin")
+            {
+                Frame.Navigate(typeof(AdminPage));
+            }
+            else
+            {
+                Frame.Navigate(typeof(HomePage));
+            }
         }
 
 
         private void GoToRegister_Click(object sender, RoutedEventArgs e)
         {
-
 
             Frame.Navigate(typeof(RegisterPage));
         }

@@ -14,10 +14,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\AdminPage.xaml" />
+    <None Remove="Views\CreateItemsPage.xaml" />
+    <None Remove="Views\EditItemsPage.xaml" />
     <None Remove="Views\HomePage.xaml" />
     <None Remove="Views\InventoryPage.xaml" />
     <None Remove="Views\LoginPage.xaml" />
     <None Remove="Views\RegisterPage.xaml" />
+    <None Remove="Views\TradePage.xaml" />
     <None Remove="Views\WelcomePage.xaml" />
   </ItemGroup>
 
@@ -49,6 +53,26 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7705" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.260209005" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\TradePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\CreateItemsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\EditItemsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\AdminPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\InventoryPage.xaml">

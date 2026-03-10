@@ -18,6 +18,7 @@ namespace DreamScapeInteractive.Data
 
         public DbSet<Trade> Trades { get; set; }
         public DbSet<TradeItem> TradeItems { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
 
 

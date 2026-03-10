@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="DreamScapeInteractive.Views.CreateItemsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DreamScapeInteractive.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="#1E1E1E">
+        <ScrollViewer Padding="20" VerticalScrollBarVisibility="Auto">
+            <StackPanel Width="400" Spacing="15">
+                <Button Content="Back" Click="BackButton_Click" HorizontalAlignment="Left" Padding="10,5" Background="#0078D4" Foreground="White" FontSize="14"/>
+
+                <TextBlock Text="Create New Item" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#FFFFFF"/>
+                <TextBlock Text="Add a new item to your game" FontSize="12" HorizontalAlignment="Center" Foreground="#B0B0B0"/>
+
+                <!-- Success/Error Messages -->
+                <TextBlock x:Name="SuccessMessage" Text="" FontSize="14" Foreground="#4CAF50" HorizontalAlignment="Center" Visibility="Collapsed" FontWeight="SemiBold"/>
+                <TextBlock x:Name="ErrorText" Foreground="#FF6B6B" HorizontalAlignment="Center" Visibility="Collapsed" TextWrapping="Wrap"/>
+
+                <Border Background="#2D2D2D" CornerRadius="8" Padding="15" BorderThickness="1" BorderBrush="#404040">
+                    <StackPanel Orientation="Vertical" Spacing="12">
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Item Name" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <TextBox x:Name="NameInput" PlaceholderText="Enter item name" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Description" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <TextBox x:Name="DescriptionInput" PlaceholderText="Enter description" AcceptsReturn="True" Height="80" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Type" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <ComboBox x:Name="TypeComboBox" PlaceholderText="Select Type" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040">
+                                <ComboBoxItem Content="Weapon"/>
+                                <ComboBoxItem Content="Armor"/>
+                                <ComboBoxItem Content="Potion"/>
+                                <ComboBoxItem Content="Accessory"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Rarity" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <ComboBox x:Name="RarityComboBox" PlaceholderText="Select Rarity" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040">
+                                <ComboBoxItem Content="Common"/>
+                                <ComboBoxItem Content="Uncommon"/>
+                                <ComboBoxItem Content="Rare"/>
+                                <ComboBoxItem Content="Epic"/>
+                                <ComboBoxItem Content="Legendary"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Power" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <TextBox x:Name="PowerInput" PlaceholderText="Power (number)" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Speed" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <TextBox x:Name="SpeedInput" PlaceholderText="Speed (number)" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Durability" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <TextBox x:Name="DurabilityInput" PlaceholderText="Durability (number)" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Enchantments" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <TextBox x:Name="EnchantmentsInput" PlaceholderText="Enchantments (comma separated)" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Button Content="Create Item" Click="CreateItemButton_Click" Padding="15,10" Background="#4CAF50" Foreground="White" HorizontalAlignment="Center" FontSize="14" CornerRadius="4" MinWidth="200"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

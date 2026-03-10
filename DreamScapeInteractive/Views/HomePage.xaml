@@ -8,10 +8,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock Text="Welcome to the Home Page!" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid Background="#1E1E1E">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical" Spacing="30" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="20">
+                <StackPanel Orientation="Vertical" Spacing="10" HorizontalAlignment="Center">
+                    <TextBlock Text="Welcome to" FontSize="18" Foreground="#B0B0B0" HorizontalAlignment="Center"/>
+                    <TextBlock Text="DreamScape Interactive" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#FFFFFF"/>
+                    <TextBlock Text="An Epic Adventure Awaits" FontSize="14" FontStyle="Italic" Foreground="#808080" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </StackPanel>
 
+                <StackPanel Orientation="Vertical" Spacing="15" HorizontalAlignment="Center">
+                    <Button Content="Inventory" Click="InventoryPage_Click" MinWidth="220" Padding="15,12" FontSize="16" Background="#4CAF50" Foreground="White" CornerRadius="4"/>
+                    <TextBlock Text="View and manage your items" FontSize="12" Foreground="#808080" HorizontalAlignment="Center"/>
 
-        <Button Content="Inventory" Click="InventoryPage_Click"/>
+                    <Button Content="Trade" Click="TradePage_Click" MinWidth="220" Padding="15,12" FontSize="16" Background="#2196F3" Foreground="White" CornerRadius="4"/>
+                    <TextBlock Text="Trade items with other players" FontSize="12" Foreground="#808080" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <Button Content="Back" Click="BackButton_Click" HorizontalAlignment="Center" Padding="10,5" Background="#0078D4" Foreground="White" FontSize="14" Margin="0,20,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

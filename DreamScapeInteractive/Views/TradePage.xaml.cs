@@ -21,29 +21,11 @@ namespace DreamScapeInteractive.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HomePage : Page
+    public sealed partial class TradePage : Page
     {
-        public HomePage()
+        public TradePage()
         {
             InitializeComponent();
-        }
-
-        private void InventoryPage_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(InventoryPage));
-        }
-
-        private void TradePage_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(TradePage));
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (Frame.CanGoBack)
-            {
-                Frame.GoBack();
-            }
         }
     }
 }

@@ -9,6 +9,6 @@ namespace DreamScapeInteractive.Model
     public class Role
     {
         public int Id { get; set; }
-        public string Roles { get; set; } 
+        public string Roles { get; set; } = string.Empty;
     }
 }

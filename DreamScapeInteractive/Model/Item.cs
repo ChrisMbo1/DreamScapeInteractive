@@ -33,9 +33,5 @@ namespace DreamScapeInteractive.Model
 
         public string Enchantments { get; set; } = string.Empty;
 
-     /*   INSERT INTO `roles` (`Name`)
-VALUES 
-    ('Admin'),
-    ('User');*/
     }
 }

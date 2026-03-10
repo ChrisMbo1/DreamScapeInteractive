@@ -9,22 +9,35 @@
     mc:Ignorable="d">
 
 
-    <Grid Padding="20" VerticalAlignment="Center">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Background="#1E1E1E">
+        <Grid VerticalAlignment="Center">
+            <StackPanel Width="350" Spacing="15" HorizontalAlignment="Center" Padding="20">
+                <TextBlock Text="Welcome Back" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#FFFFFF"/>
+                <TextBlock Text="Sign in to your account" FontSize="12" HorizontalAlignment="Center" Foreground="#B0B0B0"/>
 
-        <StackPanel Width="300" Spacing="12">
+                <Border Background="#2D2D2D" CornerRadius="8" Padding="20" BorderThickness="1" BorderBrush="#404040">
+                    <StackPanel Orientation="Vertical" Spacing="12">
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Username" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <TextBox x:Name="UsernameInput" PlaceholderText="Enter your username" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040"/>
+                        </StackPanel>
 
-            <TextBlock Text="Login" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <TextBlock Text="Password" Foreground="#B0B0B0" FontSize="12" FontWeight="SemiBold"/>
+                            <PasswordBox x:Name="PasswordInput" PlaceholderText="Enter your password" Background="#1E1E1E" Foreground="#E0E0E0" BorderBrush="#404040"/>
+                        </StackPanel>
 
-            <TextBox x:Name="UsernameInput" PlaceholderText="Username" />
-            <PasswordBox x:Name="PasswordInput" PlaceholderText="Password"/>
+                        <TextBlock x:Name="ErrorText" Foreground="#FF6B6B" Visibility="Collapsed" TextWrapping="Wrap"/>
 
-            <Button Content="Login" Click="LoginButton_Click"/>
+                        <Button Content="Login" Click="LoginButton_Click" Padding="15,10" Background="#4CAF50" Foreground="White" FontSize="14" HorizontalAlignment="Stretch" CornerRadius="4"/>
+                    </StackPanel>
+                </Border>
 
-            <TextBlock Text="Don't have an account?" HorizontalAlignment="Center"/>
-            <Button Content="Register" Click="GoToRegister_Click"/>
-
-            <TextBlock x:Name="ErrorText" Foreground="Red" Visibility="Collapsed"/>
-        </StackPanel>
-
-    </Grid>
+                <StackPanel Orientation="Vertical" Spacing="8" HorizontalAlignment="Center">
+                    <TextBlock Text="Don't have an account?" HorizontalAlignment="Center" Foreground="#B0B0B0" FontSize="12"/>
+                    <Button Content="Create Account" Click="GoToRegister_Click" Background="#2196F3" Foreground="White" Padding="12,8" HorizontalAlignment="Center" CornerRadius="4"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using DreamScapeInteractive.Model;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -30,7 +31,39 @@ namespace DreamScapeInteractive.Views
             InitializeComponent();
             LoadInventory();
         }
+        private List<Inventory> fullInventory = new();
 
+        private void ApplyFilter()
+        {
+            if (fullInventory == null || TypeFilterCombo == null || RarityFilterCombo == null)
+                return;
+
+            var filtered = fullInventory.AsEnumerable();
+
+            if (TypeFilterCombo.SelectedItem is ComboBoxItem typeItem && typeItem.Content.ToString() != "All Types")
+            {
+                if (Enum.TryParse<ItemType>(typeItem.Content.ToString(), out var type))
+                    filtered = filtered.Where(i => i.Item.Type == type);
+            }
+
+            if (RarityFilterCombo.SelectedItem is ComboBoxItem rarityItem && rarityItem.Content.ToString() != "All Rarity")
+            {
+                if (Enum.TryParse<Rarity>(rarityItem.Content.ToString(), out var rarity))
+                    filtered = filtered.Where(i => i.Item.Rarity == rarity);
+            }
+
+
+            var filteredList = filtered.ToList();
+            InventoryList.ItemsSource = filteredList;
+
+            NoItemsText.Visibility = filteredList.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+
+        private void Filter_Changed(object sender, RoutedEventArgs e)
+        {
+            ApplyFilter();
+        }
 
         private void LoadInventory()
         {
@@ -43,18 +76,19 @@ namespace DreamScapeInteractive.Views
 
             using var db = new Data.AppDataContext();
 
-            var inventory = db.Inventories
+            fullInventory = db.Inventories
                               .Include(i => i.Item)
                               .Where(i => i.UserId == Sessions.CurrentUser.Id)
                               .ToList();
 
-            if (inventory.Count == 0)
+            ApplyFilter();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
             {
-                NoItemsText.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                InventoryList.ItemsSource = inventory;
+                Frame.GoBack();
             }
         }
     }
